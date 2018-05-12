@@ -32,7 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Course\Connector\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,27 +50,41 @@
   <ItemGroup>
     <Compile Include="database\DataFabric.cs" />
     <Compile Include="database\DBConnectorMySQL.cs" />
-    <Compile Include="Authorization.cs">
+    <Compile Include="Forms\Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authorization.Designer.cs">
+    <Compile Include="Forms\Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
-    <Compile Include="data-models\UsersModel.cs" />
-    <Compile Include="parser\IConfigParser.cs" />
-    <Compile Include="parser\TxtConfigParser.cs" />
-    <Compile Include="People.cs">
+    <Compile Include="data-models\UserDto.cs" />
+    <Compile Include="Forms\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People.Designer.cs">
+    <Compile Include="Forms\Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\ComponentsSetting.cs" />
+    <Compile Include="parser\IConfigParser.cs" />
+    <Compile Include="parser\TxtConfigParser.cs" />
+    <Compile Include="Forms\People.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\People.Designer.cs">
       <DependentUpon>People.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Authorization.resx">
+    <EmbeddedResource Include="Forms\Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Defaults.resx" />
+    <EmbeddedResource Include="Properties\DefaultsFormsValues.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DefaultsFormsValues.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\MySQLNames.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MySQLNames.Designer.cs</LastGenOutput>
@@ -86,6 +102,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Defaults.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\DefaultsFormsValues.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultsFormsValues.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\MySQLNames.Designer.cs">
       <AutoGen>True</AutoGen>

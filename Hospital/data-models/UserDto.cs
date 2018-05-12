@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hospital.Models
+﻿namespace Hospital
 {
     public class UserDto
     {
@@ -17,6 +11,11 @@ namespace Hospital.Models
             User = user;
             Password = password;
             Name = name;
+        }
+
+        public UserDto()
+        {
+            
         }
     }
 }

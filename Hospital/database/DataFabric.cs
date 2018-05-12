@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Hospital.Models;
 
 namespace Hospital.database
 {
