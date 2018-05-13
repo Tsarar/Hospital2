@@ -49,13 +49,15 @@ namespace Hospital
 
         }
 
+        #region ComponentSetting
+
         private void LoginTextBox_TextChanged(object sender, EventArgs e)
         {
             if (LoginTextBox.Text == String.Empty)
                 _componentSettings
-                    .TextBoxDefaultSetting(LoginTextBox, 
-                                           Properties.DefaultsFormsValues
-                                           .LoginTextBoxText);
+                    .TextBoxDefaultSetting(LoginTextBox,
+                        Properties.DefaultsFormsValues
+                            .LoginTextBoxText);
         }
 
         private void LoginTextBox_Enter(object sender, EventArgs e)
@@ -69,8 +71,8 @@ namespace Hospital
             if (PasswordTextBox.Text == String.Empty)
                 _componentSettings
                     .TextBoxDefaultSetting(PasswordTextBox,
-                                           Properties.DefaultsFormsValues
-                                           .PasswordTextBoxText);
+                        Properties.DefaultsFormsValues
+                            .PasswordTextBoxText);
         }
 
         private void PasswordTextBox_Enter(object sender, EventArgs e)
@@ -78,5 +80,8 @@ namespace Hospital
             if (String.IsNullOrEmpty(PasswordTextBox.Text))
                 _componentSettings.TextBoxEnterSetting(PasswordTextBox);
         }
+
+        #endregion
+
     }
 }
