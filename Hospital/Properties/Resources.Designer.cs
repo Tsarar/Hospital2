@@ -22,14 +22,14 @@ namespace Hospital.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DefaultsFormsValues {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DefaultsFormsValues() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hospital.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hospital.Properties.DefaultsFormsValues", typeof(DefaultsFormsValues).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hospital.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,12 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Введите код  регистрации.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string AccessTextBoxText {
+        internal static System.Drawing.Bitmap searchingIcon {
             get {
-                return ResourceManager.GetString("AccessTextBoxText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Введите логин.
-        /// </summary>
-        internal static string LoginTextBoxText {
-            get {
-                return ResourceManager.GetString("LoginTextBoxText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Введите Ваше имя.
-        /// </summary>
-        internal static string NameTextBoxText {
-            get {
-                return ResourceManager.GetString("NameTextBoxText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Введите текст.
-        /// </summary>
-        internal static string PasswordTextBoxText {
-            get {
-                return ResourceManager.GetString("PasswordTextBoxText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Поиск....
-        /// </summary>
-        internal static string Search {
-            get {
-                return ResourceManager.GetString("Search", resourceCulture);
+                object obj = ResourceManager.GetObject("searchingIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

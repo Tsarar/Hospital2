@@ -32,16 +32,42 @@ namespace Hospital.Forms
             List<UserDto> allUsers = DataFabric.GetUsers();
 
             if (allUsers.First(currentUser =>
-                    currentUser.Name == "admin" &&
-                    currentUser.Password == CodeTextBox.Text)
-                != null)
+                    currentUser.Name == LoginTextBox.Text &&
+                    currentUser.User == NameTextBox.Text)
+                == null)
             {
-                _newUser.Name = LoginTextBox.Text;
-                _newUser.User = NameTextBox.Text;
-                _newUser.Password = PasswordTextBox.Text;
+                if (allUsers.First(currentUser =>
+                        currentUser.Name == "admin" &&
+                        currentUser.Password == CodeTextBox.Text)
+                    != null)
+                {
+                    _newUser.Name = LoginTextBox.Text;
+                    _newUser.User = NameTextBox.Text;
+                    _newUser.Password = PasswordTextBox.Text;
+
+                    string values = _newUser.User + ','
+                                                  + _newUser.Password
+                                                  + ',' + _newUser.Name;
+
+                    _DBaccess.Insert(Properties.MySQLNames.userTableName
+                        , Properties.MySQLNames.userFields
+                        , values);
+                } //todo maybe add filling authorization form by this values
+                else
+                {
+                    MessageBox.Show("Неверный код!", "Ошибка регистрации"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Такой пользователь уже существует"
+                    , "Ошибка регистрации"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
             }
 
-            // dbname????? NO _DBaccess.Insert();
         }
 
 
