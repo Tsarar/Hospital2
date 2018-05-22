@@ -21,5 +21,6 @@ namespace Hospital.Helper
             textBox.Text = String.Empty;
             textBox.ForeColor = Color.Black;
         }
+
     }
 }
