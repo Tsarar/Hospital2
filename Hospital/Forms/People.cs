@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Hospital.data_models;
 using Hospital.Helper;
+using Hospital.Dto;
 
 namespace Hospital
 {
     public partial class People : Form
     {
-        private ComponentsSetting _componentsSetting;
-        private List<PeopleDto> _peopleData;
+        private readonly ComponentsSetting _componentsSetting;
+        private readonly List<PeopleDto> _peopleData;
         
         public People()
         {
@@ -28,19 +23,15 @@ namespace Hospital
         {
             dgvPeople.Rows.Clear();
             data.ForEach(current => dgvPeople.Rows.Add(current.FirstDate, current.Document,
-                                                        current.NumberOfCard, current.Surname, current.Name, current.SecondName,
-                                                        current.PhoneNumber, current.District, current.Comment, current.Author));
+                                                       current.NumberOfCard, current.Surname, current.Name, current.SecondName,
+                                                       current.PhoneNumber, current.Area, current.Description, current.Author));
         }
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
             if (SearchTextBox.Focused)
-      
-                    {
-                        InitializeDataGrid(_peopleData.Where(current =>
-                           current.Surname.Contains(SearchTextBox.Text)
-                        ).ToList());
-                    }
-                
+            {
+                InitializeDataGrid(_peopleData.Where(current => current.Surname.Contains(SearchTextBox.Text) ).ToList());
+            }   
         }
 
         
@@ -57,12 +48,10 @@ namespace Hospital
 
         private void SearchDelButton_Click(object sender, EventArgs e)
         {
-            if (SearchTextBox.Text != String.Empty)
+            if (!String.IsNullOrEmpty(SearchTextBox.Text))
             {
-                _componentsSetting
-                    .TextBoxDefaultSetting(SearchTextBox,
-                        Properties.DefaultsFormsValues
-                            .Search);
+                _componentsSetting.TextBoxDefaultSetting(SearchTextBox, 
+                                                         Properties.DefaultsFormsValues.Search);
             }
 
             InitializeDataGrid(_peopleData);

@@ -1,4 +1,4 @@
-﻿namespace Hospital.Forms
+﻿namespace Hospital
 {
     partial class Registration
     {
@@ -98,7 +98,7 @@
             this.EnterButton.TabIndex = 6;
             this.EnterButton.Text = "ОК";
             this.EnterButton.UseVisualStyleBackColor = true;
-            this.EnterButton.Click += new System.EventHandler(this.EnterButton_Click);
+            this.EnterButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // Registration
             // 

@@ -1,25 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
-namespace Hospital.parser
+namespace Hospital.Config
 {
-    class TxtConfigParser : IConfigParser
+    public class TxtConfigParser : IConfigParser
     {
-        private readonly Dictionary<string, string> _values = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> _values;
 
         public TxtConfigParser(string path)
         {
             ReadFile(path);
+            _values = new Dictionary<string, string>();
         }
+
         public void ReadFile(string path)
         {
             if (!File.Exists(path))
             {
-                MessageBox.Show(Properties.Messages.Error + @" " + path + @" " + Properties.Messages.notExist);
-                return;
+                throw new Exception($@"{Properties.Messages.Error} {path} {Properties.Messages.notExist}");
             }
 
             var filestream = new FileStream(path, 
@@ -31,7 +32,8 @@ namespace Hospital.parser
             {
                 line = line.Trim();
                 //except section names
-                if (!line.Contains("[") && line != "")
+                if (!String.IsNullOrEmpty(line) &&
+                    !line.Contains("["))
                 {
                     var arr = line.Split(':');
                     _values.Add(arr[0].Trim(), arr[1].Trim());
@@ -51,25 +53,20 @@ namespace Hospital.parser
             //invalid pattern
             else
             {
-                MessageBox.Show(Properties.Messages.Error + @" " + 
-                                Properties.Messages.ValidationRuleFor + @" "+
-                                paramName +  @" " + 
-                                Properties.Messages.isNotDefined + @"!");
-                return "";
+                throw new Exception($@"{Properties.Messages.Error} {Properties.Messages.ValidationRuleFor} " +
+                                    $@"{paramName} {Properties.Messages.isNotDefined}!");
             }
 
             //wrong parameter
             if (!_values.ContainsKey(paramName))
             {
-                MessageBox.Show(Properties.Messages.Error + @" " + paramName + @" " + Properties.Messages.notExist);
-                return "";
+                throw new Exception($@"{Properties.Messages.Error} {paramName} {Properties.Messages.notExist}");
             }
 
             //validation
             if (!Regex.IsMatch(_values[paramName], pattern))
             {
-                MessageBox.Show(Properties.Messages.Error + @" " + paramName + @" " + Properties.Messages.invalid);
-                return "";
+                throw new Exception($@"{Properties.Messages.Error} {paramName} {Properties.Messages.invalid}");
             }
 
             return _values[paramName];
@@ -79,8 +76,7 @@ namespace Hospital.parser
         {
             if (_values.ContainsKey(paramName)) return _values[paramName];
             //nonexistent parameter
-            MessageBox.Show(Properties.Messages.Error + @" " + paramName + @" " + Properties.Messages.notExist);
-            return "";
+            throw new Exception($@"{Properties.Messages.Error} {paramName} {Properties.Messages.notExist}");
         }
     }
 }

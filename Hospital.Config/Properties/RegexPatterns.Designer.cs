@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hospital.Properties {
+namespace Hospital.Config.Properties {
     using System;
     
     
@@ -19,17 +19,17 @@ namespace Hospital.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Defaults {
+    internal class RegexPatterns {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Defaults() {
+        internal RegexPatterns() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hospital.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hospital.Properties.Defaults", typeof(Defaults).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hospital.Config.Properties.RegexPatterns", typeof(RegexPatterns).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,16 +61,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hospital.
-        /// </summary>
-        internal static string Database {
-            get {
-                return ResourceManager.GetString("Database", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to localhost.
+        ///   Looks up a localized string similar to (localhost|^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$).
         /// </summary>
         internal static string Host {
             get {
@@ -79,29 +70,20 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to ^\d+$.
         /// </summary>
-        internal static string Password {
+        internal static string Number {
             get {
-                return ResourceManager.GetString("Password", resourceCulture);
+                return ResourceManager.GetString("Number", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3306.
+        ///   Looks up a localized string similar to ^\w+$.
         /// </summary>
-        internal static string Port {
+        internal static string String {
             get {
-                return ResourceManager.GetString("Port", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to root.
-        /// </summary>
-        internal static string User {
-            get {
-                return ResourceManager.GetString("User", resourceCulture);
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
     }

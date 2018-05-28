@@ -19,7 +19,7 @@ namespace Hospital.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class MySQLNames {
@@ -57,6 +57,24 @@ namespace Hospital.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;id&apos;, &apos;date&apos;, &apos;document&apos;, &apos;card_num&apos;, &apos;surname&apos;, &apos;name&apos;, &apos;father_name&apos;, &apos;phone_num&apos;, &apos;area&apos;, &apos;description&apos;, &apos;author&apos;.
+        /// </summary>
+        internal static string cardsFields {
+            get {
+                return ResourceManager.GetString("cardsFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cards.
+        /// </summary>
+        internal static string cardsTableName {
+            get {
+                return ResourceManager.GetString("cardsTableName", resourceCulture);
             }
         }
         

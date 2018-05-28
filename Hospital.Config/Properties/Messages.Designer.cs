@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hospital.Properties {
+namespace Hospital.Config.Properties {
     using System;
     
     
@@ -19,17 +19,17 @@ namespace Hospital.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class MySQLMessages {
+    internal class Messages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MySQLMessages() {
+        internal Messages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hospital.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hospital.Properties.MySQLMessages", typeof(MySQLMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hospital.Config.Properties.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,47 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot connect to server!.
+        ///   Looks up a localized string similar to Error!.
         /// </summary>
-        internal static string CannotConnectError {
+        internal static string Error {
             get {
-                return ResourceManager.GetString("CannotConnectError", resourceCulture);
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid database password!.
+        ///   Looks up a localized string similar to invalid.
         /// </summary>
-        internal static string InvalidPassword {
+        internal static string invalid {
             get {
-                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+                return ResourceManager.GetString("invalid", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to backup!.
+        ///   Looks up a localized string similar to is not defined.
         /// </summary>
-        internal static string UnableToBackup {
+        internal static string isNotDefined {
             get {
-                return ResourceManager.GetString("UnableToBackup", resourceCulture);
+                return ResourceManager.GetString("isNotDefined", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown error!.
+        ///   Looks up a localized string similar to not exist!.
         /// </summary>
-        internal static string UnknownError {
+        internal static string notExist {
             get {
-                return ResourceManager.GetString("UnknownError", resourceCulture);
+                return ResourceManager.GetString("notExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validation rule for.
+        /// </summary>
+        internal static string ValidationRuleFor {
+            get {
+                return ResourceManager.GetString("ValidationRuleFor", resourceCulture);
             }
         }
     }

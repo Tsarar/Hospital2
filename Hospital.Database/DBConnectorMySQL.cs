@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
-using Hospital.parser;
+using Hospital.Config;
 using MySql.Data.MySqlClient;
 
-namespace Hospital.database
+namespace Hospital.Database
 {
-   public class DBConnectorMySQL
+    public class DBConnectorMySQL
     {
         private MySqlConnection _connection;
         private string _server;
@@ -29,15 +28,15 @@ namespace Hospital.database
         {
             //Host
             string buf = _parser.GetSetting("host", "host");
-            _server = (buf == "") ? Properties.Defaults.Host : buf;
+            _server = (buf == "") ? Properties.DatabaseDefaults.Host : buf;
 
             //Database
             buf = _parser.GetSetting("database", "string");
-            _database = (buf == "") ? Properties.Defaults.Database : buf;
+            _database = (buf == "") ? Properties.DatabaseDefaults.Database : buf;
 
             //Username
             buf = _parser.GetSetting("user", "string");
-            _uid = (buf == "") ? Properties.Defaults.User : buf;
+            _uid = (buf == "") ? Properties.DatabaseDefaults.User : buf;
 
             //Password
             _password = _parser.GetRawSetting("password");
@@ -69,19 +68,16 @@ namespace Hospital.database
                 switch (ex.Number)
                 {
                     case 0:
-                        MessageBox.Show(Properties.MySQLMessages.CannotConnectError);
-                        break;
+                        throw new Exception(Properties.MySQLMessages.CannotConnectError);
 
                     case 1045:
-                        MessageBox.Show(Properties.MySQLMessages.InvalidPassword);
-                        break;
+                        throw new Exception(Properties.MySQLMessages.InvalidPassword);
                 }
                 return false;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                return false;
+                throw new Exception(e.Message);
             }
         }
 
@@ -95,13 +91,11 @@ namespace Hospital.database
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                return false;
+                throw new Exception(e.Message);
             }
         }
 
@@ -116,7 +110,7 @@ namespace Hospital.database
         {
             try
             {
-                string query = "INSERT INTO " + tbname + " (" + fields + ") VALUES(" + values + ")";
+                string query = $"INSERT INTO {tbname} ({fields}) VALUES({values})";
                 //open connection
                 if (OpenConnection())
                 {
@@ -132,7 +126,7 @@ namespace Hospital.database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                throw new Exception(e.Message);
             }
         }
 
@@ -147,7 +141,7 @@ namespace Hospital.database
         {
             try
             {
-                string query = "UPDATE " + tbname + " SET " + set + " WHERE " + where + ";";
+                string query = $"UPDATE {tbname} SET {set} WHERE {where};";
 
                 //Open connection
                 if (OpenConnection())
@@ -170,7 +164,7 @@ namespace Hospital.database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                throw new Exception(e.Message);
             }
         }
 
@@ -179,7 +173,7 @@ namespace Hospital.database
         {
             try
             {
-                string query = "DELETE FROM " + tbname + " WHERE " + where + ";";
+                string query = $"DELETE FROM {tbname} WHERE {where};";
 
                 if (OpenConnection())
                 {
@@ -190,7 +184,7 @@ namespace Hospital.database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                throw new Exception(e.Message);
             }
         }
 
@@ -207,10 +201,10 @@ namespace Hospital.database
         {
             try
             {
-                string query = "SELECT * FROM " + tbname + " WHERE "+where+";";
+                string query = $"SELECT * FROM {tbname} WHERE {where};";
 
                 //Create a list to store the result
-                List<string>[] list = new List<string>[fieldNames.Count];
+                var list = new List<string>[fieldNames.Count];
                 for (int i = 0; i < fieldNames.Count; i++)
                 {
                     list[i] = new List<string>();
@@ -238,19 +232,13 @@ namespace Hospital.database
 
                     //close Connection
                     CloseConnection();
-
-                    //return list to be displayed
-                    return list;
                 }
-                else
-                {
-                    return list;
-                }
+                //return list to be displayed
+                return list;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                return new List<string>[0];
+                throw new Exception(e.Message);
             }
         }
 
@@ -259,7 +247,7 @@ namespace Hospital.database
         {
             try
             {
-                string query = "SELECT Count(*) FROM " + tbname;
+                string query = $"SELECT Count(*) FROM {tbname}";
                 int count = -1;
 
                 //Open Connection
@@ -273,18 +261,12 @@ namespace Hospital.database
 
                     //close Connection
                     CloseConnection();
-
-                    return count;
                 }
-                else
-                {
-                    return count;
-                }
+                return count;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                return -1;
+                throw new Exception(e.Message);
             }
         }
 
@@ -318,7 +300,7 @@ namespace Hospital.database
 
                 Process process = Process.Start(psi);
 
-                
+
                 if (process != null)
                 {
                     string output = process.StandardOutput.ReadToEnd();
@@ -331,11 +313,11 @@ namespace Hospital.database
             }
             catch (IOException)
             {
-                MessageBox.Show(Properties.MySQLMessages.UnableToBackup);
+                throw new Exception(Properties.MySQLMessages.UnableToBackup);
             }
             catch
             {
-                MessageBox.Show(Properties.MySQLMessages.UnknownError);
+                throw new Exception(Properties.MySQLMessages.UnknownError);
             }
         }
 
@@ -371,11 +353,11 @@ namespace Hospital.database
             }
             catch (IOException)
             {
-                MessageBox.Show(Properties.MySQLMessages.UnableToBackup);
+                throw new Exception(Properties.MySQLMessages.UnableToBackup);
             }
             catch
             {
-                MessageBox.Show(Properties.MySQLMessages.UnknownError);
+                throw new Exception(Properties.MySQLMessages.UnknownError);
             }
         }
     }

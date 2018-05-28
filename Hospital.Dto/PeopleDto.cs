@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Hospital.data_models
+namespace Hospital.Dto
 {
-    class PeopleDto
+    public class PeopleDto
     {
+        public int Id { set; get; }
         public DateTime FirstDate { set; get; }
         public string Document { set; get; }
         public int NumberOfCard { set; get; }
         public string Surname { set; get; }
         public string Name { set; get; }
         public string SecondName { set; get; }
-        public int PhoneNumber { set; get; }
-        public string District { set; get; }
-        public string Comment { set; get; }
+        public string PhoneNumber { set; get; }
+        public string Area { set; get; }
+        public string Description { set; get; }
         public string Author { set; get; }
     }
 }

@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Hospital</RootNamespace>
     <AssemblyName>Hospital</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,16 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="data-models\PeopleDto.cs" />
-    <Compile Include="database\DataFabric.cs" />
-    <Compile Include="database\DBConnectorMySQL.cs" />
+    <Compile Include="DataFabric.cs" />
     <Compile Include="Forms\Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
-    <Compile Include="data-models\UserDto.cs" />
     <Compile Include="Forms\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,8 +63,6 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\ComponentsSetting.cs" />
-    <Compile Include="parser\IConfigParser.cs" />
-    <Compile Include="parser\TxtConfigParser.cs" />
     <Compile Include="Forms\People.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,52 +80,18 @@
     <EmbeddedResource Include="Forms\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Defaults.resx" />
     <EmbeddedResource Include="Properties\DefaultsFormsValues.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DefaultsFormsValues.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\MySQLNames.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MySQLNames.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\MySQLMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MySQLMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Messages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Defaults.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Defaults.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\DefaultsFormsValues.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DefaultsFormsValues.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\MySQLNames.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MySQLNames.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\MySQLMessages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MySQLMessages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Messages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Messages.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Properties\RegexPatterns.resx">
+    <EmbeddedResource Include="Properties\MySQLNames.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>RegexPatterns.Designer.cs</LastGenOutput>
+      <LastGenOutput>MySQLNames.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,10 +101,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\RegexPatterns.Designer.cs">
+    <Compile Include="Properties\MySQLNames.Designer.cs">
+      <DependentUpon>MySQLNames.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RegexPatterns.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -160,6 +122,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\searchingIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hospital.Config\Hospital.Config.csproj">
+      <Project>{6a1d74ed-f312-43a5-96f1-fdbe760f1360}</Project>
+      <Name>Hospital.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hospital.Database\Hospital.Database.csproj">
+      <Project>{8b749e1e-079b-4c79-8a0e-7a38c3718a01}</Project>
+      <Name>Hospital.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hospital.Dto\Hospital.Dto.csproj">
+      <Project>{6d9bba88-4fee-44a0-a544-cd0d006e7fe1}</Project>
+      <Name>Hospital.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
