@@ -12,8 +12,8 @@ namespace Hospital.Config
 
         public TxtConfigParser(string path)
         {
-            ReadFile(path);
             _values = new Dictionary<string, string>();
+            ReadFile(path);
         }
 
         public void ReadFile(string path)
@@ -27,10 +27,10 @@ namespace Hospital.Config
                                             FileMode.Open,
                                             FileAccess.Read);
             var file = new StreamReader(filestream, Encoding.UTF8, true, 128);
+
             string line;
-            while ((line = file.ReadLine()) != null)
+            while ((line = file.ReadLine()?.Trim()) != null)
             {
-                line = line.Trim();
                 //except section names
                 if (!String.IsNullOrEmpty(line) &&
                     !line.Contains("["))
