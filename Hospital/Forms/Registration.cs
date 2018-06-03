@@ -10,13 +10,13 @@ namespace Hospital
     public partial class Registration : Form
     {
         private readonly ComponentsSetting _componentsSetting;
-        private readonly DBConnectorMySQL _DBaccess;
-        public Registration()
+        private readonly DBConnectorMySQL _connect;
+        public Registration(DBConnectorMySQL connect, ComponentsSetting componentSettings)
         {
             InitializeComponent();
 
-            _DBaccess = new DBConnectorMySQL();
-            _componentsSetting = new ComponentsSetting();
+            _connect = connect;
+            _componentsSetting = componentSettings;
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace Hospital
 
             string values = $"'{newUser.User}', '{newUser.Password}', '{newUser.Name}'";
 
-            _DBaccess.Insert(Properties.MySQLNames.userTableName, 
+            _connect.Insert(Properties.MySQLNames.userTableName, 
                              Properties.MySQLNames.userFields, 
                              values);//todo maybe add filling authorization form by this values
         }

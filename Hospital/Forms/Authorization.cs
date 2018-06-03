@@ -1,25 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Hospital.Database;
 using Hospital.Helper;
-using Hospital.Dto;
 
 namespace Hospital
 {
     public partial class Authorization : Form
     {
+        private readonly DBConnectorMySQL _connect;
         private readonly ComponentsSetting _componentSettings;
+
         public Authorization()
         {
             InitializeComponent();
+
+            _connect = new DBConnectorMySQL();
             _componentSettings = new ComponentsSetting();
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
-            var registrationForm = new Registration();
+            var registrationForm = new Registration(_connect, _componentSettings);
             registrationForm.ShowDialog(this);
         }
 
@@ -27,7 +29,7 @@ namespace Hospital
         {
             var users = DataFabric.GetUsers();
             var currentUser = users.FirstOrDefault(user => user.Name == LoginTextBox.Text &&
-                                                            user.Password == PasswordTextBox.Text);
+                                                           user.Password == PasswordTextBox.Text);
             if (currentUser == null)
             {
                 MessageBox.Show(@"Неправильный логин или пароль!",
@@ -51,7 +53,6 @@ namespace Hospital
                 _componentSettings.TextBoxEnterSetting(LoginTextBox);
             }
         }
-
 
         private void PasswordTextBox_Enter(object sender, EventArgs e)
         {
@@ -80,7 +81,6 @@ namespace Hospital
             }
         }
         #endregion
-
-
+        
     }
 }

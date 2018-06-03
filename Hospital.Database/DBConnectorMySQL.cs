@@ -189,27 +189,21 @@ namespace Hospital.Database
         }
 
         //Select statement
-        public List<string>[] Select(string tbname, string fieldNames, string where = "1")
+        public List<string>[] Select(string tbname, List<string> fieldNames = null, string where = "1")
         {
-            string[] fieldsArray = fieldNames.Split(',');
+            string fields = fieldNames == null ? "*" : String.Join(",", fieldNames);
 
-            return Select(tbname, new List<string>(fieldsArray), where);
+            return Select(tbname, fields, where);
         }
 
         //Select statement
-        public List<string>[] Select(string tbname, List<string> fieldNames, string where = "1")
+        public List<string>[] Select(string tbname, string fieldNames, string where = "1")
         {
             try
             {
-                string query = $"SELECT * FROM {tbname} WHERE {where};";
+                string query = $"SELECT {fieldNames} FROM {tbname} WHERE {where};";
 
-                //Create a list to store the result
-                var list = new List<string>[fieldNames.Count];
-                for (int i = 0; i < fieldNames.Count; i++)
-                {
-                    list[i] = new List<string>();
-                }
-
+                List<string>[] list = null;
                 //Open connection
                 if (OpenConnection())
                 {
@@ -218,18 +212,27 @@ namespace Hospital.Database
                     //Create a data reader and Execute the command
                     MySqlDataReader dataReader = cmd.ExecuteReader();
 
+                    //Create a list to store the result
+                    int amount = dataReader.FieldCount;
+
+                    list = new List<string>[amount];
+                    for (int i = 0; i < amount; i++)
+                    {
+                        list[i] = new List<string>();
+                    }
+                    
                     //Read the data and store them in the list
                     while (dataReader.Read())
                     {
-                        for (int i = 0; i < fieldNames.Count; i++)
+                        for (int i = 0; i < amount; i++)
                         {
-                            list[i].Add(dataReader[fieldNames[i]] + "");
+                            list[i].Add(dataReader.GetString(i) + "");
                         }
                     }
 
                     //close Data Reader
                     dataReader.Close();
-
+                    
                     //close Connection
                     CloseConnection();
                 }
