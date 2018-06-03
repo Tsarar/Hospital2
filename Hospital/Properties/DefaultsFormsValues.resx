@@ -127,7 +127,7 @@
     <value>Введите Ваше имя</value>
   </data>
   <data name="PasswordTextBoxText" xml:space="preserve">
-    <value>Введите текст</value>
+    <value>Введите пароль</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Поиск...</value>

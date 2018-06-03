@@ -59,8 +59,8 @@
             this.LoginTextBox.TabIndex = 1;
             this.LoginTextBox.Text = "Введите логин";
             this.LoginTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LoginTextBox.TextChanged += new System.EventHandler(this.LoginTextBox_TextChanged);
             this.LoginTextBox.Enter += new System.EventHandler(this.LoginTextBox_Enter);
+            this.LoginTextBox.Leave += new System.EventHandler(this.LoginTextBox_Leave);
             // 
             // PasswordTextBox
             // 
@@ -72,8 +72,8 @@
             this.PasswordTextBox.TabIndex = 2;
             this.PasswordTextBox.Text = "Введите пароль";
             this.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBox_TextChanged);
             this.PasswordTextBox.Enter += new System.EventHandler(this.PasswordTextBox_Enter);
+            this.PasswordTextBox.Leave += new System.EventHandler(this.PasswordTextBox_Leave);
             // 
             // RegistrationButton
             // 

@@ -7,7 +7,12 @@ namespace Hospital
 {
     public static class DataFabric
     {
-        private static readonly DBConnectorMySQL _connect = new DBConnectorMySQL();
+        private static readonly DBConnectorMySQL _connect;
+
+        static DataFabric()
+        {
+            _connect = new DBConnectorMySQL();
+        }
 
         private static List<string>[] GetAllFields(string table, string fieldNames)
         {

@@ -44,41 +44,43 @@ namespace Hospital
 
         #region ComponentSetting
 
-        private void LoginTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(LoginTextBox.Text))
-            {
-                _componentSettings.TextBoxDefaultSetting(LoginTextBox,
-                                                         Properties.DefaultsFormsValues.LoginTextBoxText);
-
-            }
-        }
-
         private void LoginTextBox_Enter(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(LoginTextBox.Text))
+            if (LoginTextBox.Text == Properties.DefaultsFormsValues.LoginTextBoxText)
             {
                 _componentSettings.TextBoxEnterSetting(LoginTextBox);
             }
         }
 
-        private void PasswordTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(PasswordTextBox.Text))
-            {
-                _componentSettings.TextBoxDefaultSetting(PasswordTextBox,
-                                                         Properties.DefaultsFormsValues.PasswordTextBoxText);
-            }
-        }
 
         private void PasswordTextBox_Enter(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(PasswordTextBox.Text))
+            if (PasswordTextBox.Text == Properties.DefaultsFormsValues.PasswordTextBoxText)
             {
                 _componentSettings.TextBoxEnterSetting(PasswordTextBox);
             }
         }
 
+        private void LoginTextBox_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(LoginTextBox.Text))
+            {
+                _componentSettings.TextBoxDefaultSetting(LoginTextBox,
+                    Properties.DefaultsFormsValues.LoginTextBoxText);
+
+            }
+        }
+
+        private void PasswordTextBox_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(PasswordTextBox.Text))
+            {
+                _componentSettings.TextBoxDefaultSetting(PasswordTextBox,
+                    Properties.DefaultsFormsValues.PasswordTextBoxText);
+            }
+        }
         #endregion
+
+
     }
 }

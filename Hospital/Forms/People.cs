@@ -10,7 +10,7 @@ namespace Hospital
     public partial class People : Form
     {
         private readonly ComponentsSetting _componentsSetting;
-        private readonly List<PeopleDto> _peopleData;
+        private  List<PeopleDto> _peopleData;
         
         public People()
         {
@@ -59,7 +59,8 @@ namespace Hospital
 
         private void People_Load(object sender, EventArgs e)
         {
-
+            _peopleData = DataFabric.GetPeople();
+            InitializeDataGrid(_peopleData);
         }
     }
 }
