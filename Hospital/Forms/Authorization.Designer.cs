@@ -65,7 +65,7 @@
             // PasswordTextBox
             // 
             this.PasswordTextBox.ForeColor = System.Drawing.Color.DimGray;
-            this.PasswordTextBox.Location = new System.Drawing.Point(56, 89);
+            this.PasswordTextBox.Location = new System.Drawing.Point(56, 75);
             this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(260, 25);

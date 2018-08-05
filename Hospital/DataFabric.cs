@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Hospital.Database;
 using Hospital.Dto;
 
@@ -23,7 +24,7 @@ namespace Hospital
         {
             var result = new List<UserDto>();
 
-            var lst = GetAllFields(Properties.MySQLNames.userTableName, Properties.MySQLNames.userFields);
+            var lst = GetAllFields(Properties.MySQLNames.userTableName, "*");
             for (int i = 0; i < lst[0].Count; i++)
             {
                 result.Add(new UserDto()
@@ -41,7 +42,7 @@ namespace Hospital
         {
             var result = new List<PeopleDto>();
 
-            var lst = GetAllFields(Properties.MySQLNames.userTableName, Properties.MySQLNames.userFields);
+            var lst = GetAllFields(Properties.MySQLNames.userTableName, "*");
             for (int i = 0; i < lst[0].Count; i++)
             {
                 result.Add(new PeopleDto()

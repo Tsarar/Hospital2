@@ -61,7 +61,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;id&apos;, &apos;date&apos;, &apos;document&apos;, &apos;card_num&apos;, &apos;surname&apos;, &apos;name&apos;, &apos;father_name&apos;, &apos;phone_num&apos;, &apos;area&apos;, &apos;description&apos;, &apos;author&apos;.
+        ///   Looks up a localized string similar to `id`, `date`, `document`, `card_num`, `surname`, `name`, `father_name`, `phone_num`, `area`, `description`, `author`.
         /// </summary>
         internal static string cardsFields {
             get {
@@ -79,7 +79,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;user&apos;, &apos;password&apos;, &apos;name&apos;.
+        ///   Looks up a localized string similar to `user`, `password`, `name`.
         /// </summary>
         internal static string userFields {
             get {

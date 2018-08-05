@@ -42,11 +42,9 @@
             this.NameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(219, 25);
-            this.NameTextBox.TabIndex = 2;
+            this.NameTextBox.TabIndex = 1;
             this.NameTextBox.Text = "Введите ваше имя";
             this.NameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
-            this.NameTextBox.Enter += new System.EventHandler(this.NameTextBox_Enter);
             // 
             // PasswordTextBox
             // 
@@ -58,8 +56,6 @@
             this.PasswordTextBox.TabIndex = 3;
             this.PasswordTextBox.Text = "Введите пароль";
             this.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBox_TextChanged);
-            this.PasswordTextBox.Enter += new System.EventHandler(this.PasswordTextBox_Enter);
             // 
             // LoginTextBox
             // 
@@ -68,11 +64,9 @@
             this.LoginTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(219, 25);
-            this.LoginTextBox.TabIndex = 4;
+            this.LoginTextBox.TabIndex = 2;
             this.LoginTextBox.Text = "Введите логин";
             this.LoginTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LoginTextBox.TextChanged += new System.EventHandler(this.LoginTextBox_TextChanged);
-            this.LoginTextBox.Enter += new System.EventHandler(this.LoginTextBox_Enter);
             // 
             // CodeTextBox
             // 
@@ -81,7 +75,7 @@
             this.CodeTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.CodeTextBox.Name = "CodeTextBox";
             this.CodeTextBox.Size = new System.Drawing.Size(219, 25);
-            this.CodeTextBox.TabIndex = 5;
+            this.CodeTextBox.TabIndex = 4;
             this.CodeTextBox.Text = "Введите код регистрации";
             this.CodeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -95,7 +89,7 @@
             this.EnterButton.Margin = new System.Windows.Forms.Padding(4);
             this.EnterButton.Name = "EnterButton";
             this.EnterButton.Size = new System.Drawing.Size(69, 36);
-            this.EnterButton.TabIndex = 6;
+            this.EnterButton.TabIndex = 5;
             this.EnterButton.Text = "ОК";
             this.EnterButton.UseVisualStyleBackColor = true;
             this.EnterButton.Click += new System.EventHandler(this.RegistrationButton_Click);

@@ -21,7 +21,7 @@ namespace Hospital
 
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
-            var registrationForm = new Registration(_connect, _componentSettings);
+            var registrationForm = new Registration(_connect);
             registrationForm.ShowDialog(this);
         }
 
