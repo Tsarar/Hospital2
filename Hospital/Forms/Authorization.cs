@@ -27,17 +27,25 @@ namespace Hospital
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            var users = DataFabric.GetUsers();
-            var currentUser = users.FirstOrDefault(user => user.User == LoginTextBox.Text &&
-                                                           user.Password == PasswordTextBox.Text);
-            if (currentUser == null)
+            try
             {
-                MessageBox.Show(@"Неправильный логин или пароль!",
-                                @"Ошибка доступа",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                var users = DataFabric.GetUsers();
+
+                var currentUser = users.FirstOrDefault(user => user.User == LoginTextBox.Text &&
+                                                               user.Password == PasswordTextBox.Text);
+                if (currentUser == null)
+                {
+                    MessageBox.Show(@"Неправильный логин или пароль!",
+                                    @"Ошибка доступа",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return;
-                
             }
 
             var form = new People();
@@ -83,4 +91,4 @@ namespace Hospital
         #endregion
         
     }
-}
+}

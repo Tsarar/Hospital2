@@ -17,7 +17,14 @@ namespace Hospital
 
         private static List<string>[] GetAllFields(string table, string fieldNames)
         {
-            return _connect.Select(table, fieldNames);
+            try
+            {
+                return _connect.Select(table, fieldNames);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static List<UserDto> GetUsers()

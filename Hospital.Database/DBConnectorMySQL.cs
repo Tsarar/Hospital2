@@ -73,12 +73,12 @@ namespace Hospital.Database
                 switch (ex.Number)
                 {
                     case 0:
-                        throw new Exception(Properties.MySQLMessages.CannotConnectError);
-
+                        throw new Exception(ex.Message);
                     case 1045:
                         throw new Exception(Properties.MySQLMessages.InvalidPassword);
+                    default:
+                        throw ex;
                 }
-                return false;
             }
             catch (Exception e)
             {
