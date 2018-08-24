@@ -19,8 +19,12 @@ namespace Hospital.Database
         //Constructor
         public DBConnectorMySQL()
         {
-            _parser = new TxtConfigParser("config.ini");
-            Initialize();
+            try
+            {
+                _parser = new TxtConfigParser("config.ini");
+                Initialize();
+            }
+            catch(Exception ex) { }
         }
 
         //Initialize values
@@ -45,7 +49,8 @@ namespace Hospital.Database
                                       $"UID={_uid};" +
                                       $"PASSWORD={_password};" +
                                       "CharSet=utf8;" +
-                                      "Convert Zero Datetime=True";
+                                      "Convert Zero Datetime=True;" +
+                                      "SslMode=none;";
 
             _connection = new MySqlConnection(connectionString);
         }
