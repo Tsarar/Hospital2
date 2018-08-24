@@ -28,7 +28,7 @@ namespace Hospital
         private void EnterButton_Click(object sender, EventArgs e)
         {
             var users = DataFabric.GetUsers();
-            var currentUser = users.FirstOrDefault(user => user.Name == LoginTextBox.Text &&
+            var currentUser = users.FirstOrDefault(user => user.User == LoginTextBox.Text &&
                                                            user.Password == PasswordTextBox.Text);
             if (currentUser == null)
             {

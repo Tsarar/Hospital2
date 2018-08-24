@@ -42,7 +42,7 @@ namespace Hospital
         {
             var result = new List<PeopleDto>();
 
-            var lst = GetAllFields(Properties.MySQLNames.userTableName, "*");
+            var lst = GetAllFields(Properties.MySQLNames.cardsTableName, "*");
             for (int i = 0; i < lst[0].Count; i++)
             {
                 result.Add(new PeopleDto()
