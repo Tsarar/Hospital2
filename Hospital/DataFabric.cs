@@ -45,6 +45,97 @@ namespace Hospital
             return result;
         }
 
+        #region people
+
+        public static void UpdatePeople(PeopleDto people)
+        {
+            UpdatePeople(new List<PeopleDto> { people });
+        }
+
+        public static void UpdatePeople(IEnumerable<PeopleDto> peopleList)
+        {
+            foreach(var guy in peopleList)
+            {
+                try
+                {
+                    var values = $"{guy.Id}, " +
+                                 $"{guy.FirstDate}, " +
+                                 $"{guy.Document}, " +
+                                 $"{guy.NumberOfCard}, " +
+                                 $"{guy.Surname}, " +
+                                 $"{guy.Name}, " +
+                                 $"{guy.SecondName}, " +
+                                 $"{guy.PhoneNumber}, " +
+                                 $"{guy.Area}, " +
+                                 $"{guy.Description}," +
+                                 $"{guy.Author}";
+
+                    _connect.Update(Properties.MySQLNames.cardsTableName,
+                                    values,
+                                    $"id={guy.Id}");
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception($"Unexpected error: {ex.Message}, Id = {guy.Id}");
+                }
+            }
+        }
+
+        public static void InsertPeople(PeopleDto people)
+        {
+            InsertPeople(new List<PeopleDto> { people });
+        }
+
+        public static void InsertPeople(IEnumerable<PeopleDto> peopleList)
+        {
+            foreach (var guy in peopleList)
+            {
+                try
+                {
+                    var values = $"{guy.Id}, " +
+                                 $"{guy.FirstDate}, " +
+                                 $"{guy.Document}, " +
+                                 $"{guy.NumberOfCard}, " +
+                                 $"{guy.Surname}, " +
+                                 $"{guy.Name}, " +
+                                 $"{guy.SecondName}, " +
+                                 $"{guy.PhoneNumber}, " +
+                                 $"{guy.Area}, " +
+                                 $"{guy.Description}," +
+                                 $"{guy.Author}";
+
+                    _connect.Insert(Properties.MySQLNames.cardsTableName,
+                                    Properties.MySQLNames.cardsFields,
+                                    values);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Unexpected error: {ex.Message}, Id = {guy.Id}");
+                }
+            }
+        }
+
+        public static void DeletePeople(string id)
+        {
+            DeletePeople(new List<string> { id });
+        }
+
+        public static void DeletePeople(IEnumerable<string> idList)
+        {
+            foreach (var id in idList)
+            {
+                try
+                {
+                    _connect.Delete(Properties.MySQLNames.cardsTableName,
+                                    $"id={id}");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Unexpected error: {ex.Message}, Id = {id}");
+                }
+            }
+        }
+
         public static List<PeopleDto> GetPeople()
         {
             var result = new List<PeopleDto>();
@@ -70,5 +161,7 @@ namespace Hospital
 
             return result;
         }
+
+        #endregion
     }
 }
